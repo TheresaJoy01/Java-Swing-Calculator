@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 public class Calculator  implements ActionListener {
 	
 	Boolean isOperatorClicked = false;
-	
+	String operator = ""; 
 	String oldValue;
 	JFrame jf;
 	JLabel displayLabel;
@@ -147,6 +147,9 @@ public class Calculator  implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==b7) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("7");
 				isOperatorClicked = false;
@@ -155,6 +158,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b8) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("8");
 				isOperatorClicked = false;
@@ -163,6 +169,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b9) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("9");
 				isOperatorClicked = false;
@@ -171,6 +180,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b4) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("4");
 				isOperatorClicked = false;
@@ -179,6 +191,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b5) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("5");
 				isOperatorClicked = false;
@@ -187,6 +202,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b6) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("6");
 				isOperatorClicked = false;
@@ -195,6 +213,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b1) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("1");
 				isOperatorClicked = false;
@@ -203,6 +224,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b2) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("2");
 				isOperatorClicked = false;
@@ -211,6 +235,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b3) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("3");
 				isOperatorClicked = false;
@@ -219,6 +246,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==dotButton) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText(".");
 				isOperatorClicked = false;
@@ -227,6 +257,9 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==b0) {
+			if (displayLabel.getText().equals("Error")) {
+				displayLabel.setText("");
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText("0");
 				isOperatorClicked = false;
@@ -237,22 +270,51 @@ public class Calculator  implements ActionListener {
 		else if(e.getSource()==equalButton) {
 			String newValue=displayLabel.getText();
 			
-			Float oldValueF=Float.parseFloat(oldValue);
+			Float oldValueF=Float.parseFloat(oldValue);  //converting string(oldValue,newValue) to float.
 			Float newValueF=Float.parseFloat(newValue);
 			
-			Float result=oldValueF+newValueF;
-			displayLabel.setText(result+""); //To convert result to String.
-			
+			float result =  0;
+			if (operator.equals("+")) {
+				result = oldValueF+newValueF;
+			}
+			if (operator.equals("-")) {
+				result = oldValueF-newValueF; 
+			}
+			if (operator.equals("*")) {
+				result = oldValueF*newValueF; 
+			}
+			if (operator.equals("/")) {
+				if (newValueF==0) {
+					displayLabel.setText("Error");
+					return;
+				}
+				result = oldValueF/newValueF; 
+			}
+
+			displayLabel.setText(result+""); /*To convert result to String.
+			 								   The screen (JLabel) can show only text, not numbers.*/ 
+			isOperatorClicked = true;
+			operator = "";
 		}
 		else if(e.getSource()==divButton) {
+			isOperatorClicked = true;
+			oldValue = displayLabel.getText();
+			operator = "/";
 		}
 		else if(e.getSource()==multiButton) {
+			isOperatorClicked = true;
+			oldValue = displayLabel.getText();
+			operator = "*";
 		}
 		else if(e.getSource()==minusButton) {
+			isOperatorClicked = true;
+			oldValue = displayLabel.getText();
+			operator = "-";
 		}
 		else if(e.getSource()==sumButton) {
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
+			operator = "+";
 		}
 		else if(e.getSource()==clearButton) {
 			displayLabel.setText("");
