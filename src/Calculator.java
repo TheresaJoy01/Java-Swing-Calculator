@@ -249,6 +249,10 @@ public class Calculator  implements ActionListener {
 			if (displayLabel.getText().equals("Error")) {
 				displayLabel.setText("");
 			}
+			// prevent multiple dots
+			if(displayLabel.getText().contains(".")) {
+				return;
+			}
 			if(isOperatorClicked) {
 				displayLabel.setText(".");
 				isOperatorClicked = false;
@@ -268,6 +272,10 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==equalButton) {
+			// if operator was clicked but second number not entered
+			if(isOperatorClicked) {
+				return;
+			}
 			String newValue=displayLabel.getText();
 			
 			Float oldValueF=Float.parseFloat(oldValue);  //converting string(oldValue,newValue) to float.
@@ -297,27 +305,44 @@ public class Calculator  implements ActionListener {
 			operator = "";
 		}
 		else if(e.getSource()==divButton) {
+			if(displayLabel.getText().equals("")) {
+				return;
+			}
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			operator = "/";
 		}
 		else if(e.getSource()==multiButton) {
+			if(displayLabel.getText().equals("")) {
+				return;
+			}
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			operator = "*";
 		}
 		else if(e.getSource()==minusButton) {
+			if(displayLabel.getText().equals("")) {
+				return;
+			}
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			operator = "-";
 		}
 		else if(e.getSource()==sumButton) {
+			// prevent operator if no number entered
+			if(displayLabel.getText().equals("")) {
+				return;
+			}
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			operator = "+";
 		}
 		else if(e.getSource()==clearButton) {
 			displayLabel.setText("");
+			oldValue="";
+			operator="";
+			isOperatorClicked=false;
+			
 		}
 		
 	}
