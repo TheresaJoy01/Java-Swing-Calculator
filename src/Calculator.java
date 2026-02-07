@@ -308,12 +308,18 @@ public class Calculator  implements ActionListener {
 			if(displayLabel.getText().equals("")) {
 				return;
 			}
+			if(isOperatorClicked) {
+				return;
+			}
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			operator = "/";
 		}
 		else if(e.getSource()==multiButton) {
 			if(displayLabel.getText().equals("")) {
+				return;
+			}
+			if(isOperatorClicked) {
 				return;
 			}
 			isOperatorClicked = true;
@@ -324,6 +330,9 @@ public class Calculator  implements ActionListener {
 			if(displayLabel.getText().equals("")) {
 				return;
 			}
+			if(isOperatorClicked) {
+				return;
+			}
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			operator = "-";
@@ -331,6 +340,10 @@ public class Calculator  implements ActionListener {
 		else if(e.getSource()==sumButton) {
 			// prevent operator if no number entered
 			if(displayLabel.getText().equals("")) {
+				return;
+			}
+			
+			if(isOperatorClicked) {
 				return;
 			}
 			isOperatorClicked = true;
