@@ -328,9 +328,12 @@ public class Calculator  implements ActionListener {
 				}
 				result = oldValueF/newValueF; 
 			}
-
-			displayLabel.setText(result+""); /*To convert result to String.
-			 								   The screen (JLabel) can show only text, not numbers.*/ 
+			if(result==(int)result) {
+				displayLabel.setText((int)result+"");
+			}else {
+				displayLabel.setText(result+"");   			/*To convert result to String.
+		   													The screen (JLabel) can show only text, not numbers.*/ 
+			}
 			oldValue=result+"";
 			isOperatorClicked=false;
 			operator="";
