@@ -153,7 +153,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("7");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("7");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"7");
 			}
 		}
@@ -164,7 +167,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("8");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("8");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"8");
 			}
 		}
@@ -175,7 +181,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("9");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("9");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"9");
 			}
 		}
@@ -186,7 +195,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("4");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("4");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"4");
 			}
 		}
@@ -197,7 +209,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("5");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("5");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"5");
 			}
 		}
@@ -208,7 +223,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("6");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("6");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"6");
 			}
 		}
@@ -219,6 +237,9 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("1");
 				isOperatorClicked = false;
+			}
+			else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("1");
 			}else {
 				displayLabel.setText(displayLabel.getText()+"1");
 			}
@@ -230,6 +251,9 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("2");
 				isOperatorClicked = false;
+			}
+			else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("2");
 			}else {
 				displayLabel.setText(displayLabel.getText()+"2");
 			}
@@ -241,7 +265,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("3");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("3");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"3");
 			}
 		}
@@ -267,7 +294,10 @@ public class Calculator  implements ActionListener {
 			if(isOperatorClicked) {
 				displayLabel.setText("0");
 				isOperatorClicked = false;
-			}else {
+			}else if(displayLabel.getText().equals("0")) {
+				displayLabel.setText("0");
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"0");
 			}
 		}
@@ -301,8 +331,9 @@ public class Calculator  implements ActionListener {
 
 			displayLabel.setText(result+""); /*To convert result to String.
 			 								   The screen (JLabel) can show only text, not numbers.*/ 
-			isOperatorClicked = true;
-			operator = "";
+			oldValue=result+"";
+			isOperatorClicked=false;
+			operator="";
 		}
 		else if(e.getSource()==divButton) {
 			if(displayLabel.getText().equals("")) {
