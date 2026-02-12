@@ -99,11 +99,11 @@ public class Calculator  implements ActionListener {
 		dotButton.addActionListener(this);
 		jf.add(dotButton);
 		
-		equalButton=new JButton("=");
-		equalButton.setBounds(270,460, 80, 80);
-		equalButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		equalButton.addActionListener(this);
-		jf.add(equalButton);
+		clearButton=new JButton("C");
+		clearButton.setBounds(270,460, 80, 80);
+		clearButton.setFont(new Font("Arial",Font.PLAIN, 40));
+		clearButton.addActionListener(this);
+		jf.add(clearButton);
 
 		divButton=new JButton("/");
 		divButton.setBounds(380, 130, 80, 80);
@@ -129,11 +129,11 @@ public class Calculator  implements ActionListener {
 		sumButton.addActionListener(this);
 		jf.add(sumButton);
 		
-		clearButton=new JButton("Clear");
-		clearButton.setBounds(480, 460, 80, 80);
-		clearButton.setFont(new Font("Arial",Font.PLAIN, 40));
-		clearButton.addActionListener(this);
-		jf.add(clearButton);
+		equalButton=new JButton("=");
+		equalButton.setBounds(480, 460, 80, 80);
+		equalButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		equalButton.addActionListener(this);
+		jf.add(equalButton);
 		
 		
 		jf.setVisible(true);
