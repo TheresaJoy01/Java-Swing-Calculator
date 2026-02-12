@@ -26,10 +26,11 @@ public class Calculator  implements ActionListener {
 		jf.setLocation(400, 100);
 		
 		displayLabel=new JLabel();
-		displayLabel.setBounds(30, 40, 530, 60);
-		displayLabel.setBackground(Color.gray);
+		displayLabel.setBounds(30, 40, 530, 80);
+		displayLabel.setBackground(Color.black);
 		displayLabel.setOpaque(true);
 		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		displayLabel.setFont(new Font("Arial", Font.BOLD, 32));
 		displayLabel.setForeground(Color.WHITE);
 		jf.add(displayLabel);
 		
