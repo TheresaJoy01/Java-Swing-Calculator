@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 
 public class Calculator  implements ActionListener {
 	
+	Boolean isResultDisplayed = false;
 	Boolean isOperatorClicked = false;
 	String operator = ""; 
 	String oldValue;
@@ -147,6 +148,7 @@ public class Calculator  implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if (e.getSource()==b7) {
 			if (displayLabel.getText().equals("Error")) {
 				displayLabel.setText("");
@@ -156,6 +158,10 @@ public class Calculator  implements ActionListener {
 				isOperatorClicked = false;
 			}else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("7");
+			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("7");
+				isResultDisplayed=false;
 			}
 			else {
 				displayLabel.setText(displayLabel.getText()+"7");
@@ -171,6 +177,10 @@ public class Calculator  implements ActionListener {
 			}else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("8");
 			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("8");
+				isResultDisplayed=false;
+			}
 			else {
 				displayLabel.setText(displayLabel.getText()+"8");
 			}
@@ -184,6 +194,10 @@ public class Calculator  implements ActionListener {
 				isOperatorClicked = false;
 			}else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("9");
+			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("9");
+				isResultDisplayed=false;
 			}
 			else {
 				displayLabel.setText(displayLabel.getText()+"9");
@@ -199,6 +213,10 @@ public class Calculator  implements ActionListener {
 			}else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("4");
 			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("4");
+				isResultDisplayed=false;
+			}
 			else {
 				displayLabel.setText(displayLabel.getText()+"4");
 			}
@@ -212,6 +230,10 @@ public class Calculator  implements ActionListener {
 				isOperatorClicked = false;
 			}else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("5");
+			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("5");
+				isResultDisplayed=false;
 			}
 			else {
 				displayLabel.setText(displayLabel.getText()+"5");
@@ -227,6 +249,10 @@ public class Calculator  implements ActionListener {
 			}else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("6");
 			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("6");
+				isResultDisplayed=false;
+			}
 			else {
 				displayLabel.setText(displayLabel.getText()+"6");
 			}
@@ -241,7 +267,12 @@ public class Calculator  implements ActionListener {
 			}
 			else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("1");
-			}else {
+			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("1");
+				isResultDisplayed=false;
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"1");
 			}
 		}
@@ -255,7 +286,12 @@ public class Calculator  implements ActionListener {
 			}
 			else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("2");
-			}else {
+			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("2");
+				isResultDisplayed=false;
+			}
+			else {
 				displayLabel.setText(displayLabel.getText()+"2");
 			}
 		}
@@ -268,6 +304,10 @@ public class Calculator  implements ActionListener {
 				isOperatorClicked = false;
 			}else if(displayLabel.getText().equals("0")) {
 				displayLabel.setText("3");
+			}
+			else if(isResultDisplayed) {
+				displayLabel.setText("3");
+				isResultDisplayed=false;
 			}
 			else {
 				displayLabel.setText(displayLabel.getText()+"3");
@@ -303,11 +343,18 @@ public class Calculator  implements ActionListener {
 			}
 		}
 		else if(e.getSource()==equalButton) {
+			isResultDisplayed=true;
 			// if operator was clicked but second number not entered
 			if(isOperatorClicked) {
 				return;
 			}
 			String newValue=displayLabel.getText();
+			if(newValue.equals("Error")) {
+				return;
+			}
+			if(oldValue.equals("")) {
+				return;
+			}
 			
 			Float oldValueF=Float.parseFloat(oldValue);  //converting string(oldValue,newValue) to float.
 			Float newValueF=Float.parseFloat(newValue);
@@ -325,6 +372,10 @@ public class Calculator  implements ActionListener {
 			if (operator.equals("/")) {
 				if (newValueF==0) {
 					displayLabel.setText("Error");
+					
+					operator = "";
+					oldValue = "";
+					isOperatorClicked = false;
 					return;
 				}
 				result = oldValueF/newValueF; 
@@ -340,6 +391,7 @@ public class Calculator  implements ActionListener {
 			operator="";
 		}
 		else if(e.getSource()==divButton) {
+			isResultDisplayed = false;
 			if(displayLabel.getText().equals("")) {
 				return;
 			}
@@ -351,6 +403,7 @@ public class Calculator  implements ActionListener {
 			operator = "/";
 		}
 		else if(e.getSource()==multiButton) {
+			isResultDisplayed = false;
 			if(displayLabel.getText().equals("")) {
 				return;
 			}
@@ -362,6 +415,7 @@ public class Calculator  implements ActionListener {
 			operator = "*";
 		}
 		else if(e.getSource()==minusButton) {
+			isResultDisplayed = false;
 			if(displayLabel.getText().equals("")) {
 				return;
 			}
@@ -373,6 +427,7 @@ public class Calculator  implements ActionListener {
 			operator = "-";
 		}
 		else if(e.getSource()==sumButton) {
+			isResultDisplayed = false;
 			// prevent operator if no number entered
 			if(displayLabel.getText().equals("")) {
 				return;
@@ -390,6 +445,7 @@ public class Calculator  implements ActionListener {
 			oldValue="";
 			operator="";
 			isOperatorClicked=false;
+			isResultDisplayed = false;
 			
 		}
 		
