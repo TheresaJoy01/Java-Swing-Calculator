@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class Calculator  implements ActionListener {
 	
@@ -25,6 +26,10 @@ public class Calculator  implements ActionListener {
 		jf.setLayout(null);
 		jf.setSize(600, 600);
 		jf.setLocation(400, 100);
+		
+		ImageIcon icon = new ImageIcon("C:\\Users\\there\\OneDrive\\Pictures\\CalculatorIcon.png");
+        jf.setIconImage(icon.getImage());
+
 		
 		displayLabel=new JLabel();
 		displayLabel.setBounds(30, 40, 530, 80);
