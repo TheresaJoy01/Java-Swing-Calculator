@@ -27,7 +27,7 @@ public class Calculator  implements ActionListener {
 		jf.setSize(600, 600);
 		jf.setLocation(400, 100);
 		
-		ImageIcon icon = new ImageIcon("C:\\Users\\there\\OneDrive\\Pictures\\CalculatorIcon.png");
+		ImageIcon icon = new ImageIcon("resources/CalculatorIcon.png");
         jf.setIconImage(icon.getImage());
 
 		
